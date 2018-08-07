@@ -1,6 +1,5 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
     <Demo msg="These are the common components written in VueJS."/>
   </div>
 </template>

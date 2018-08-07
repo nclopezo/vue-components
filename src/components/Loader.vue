@@ -34,9 +34,10 @@ export default {
   created() {
     if (this.fullPage) {
       this.style = {
-        height: '100vh',
+        height: '100%',
         position: 'fixed',
         width: '100%',
+        zIndex: '1',
       };
     }
   },

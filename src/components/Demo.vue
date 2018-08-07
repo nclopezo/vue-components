@@ -1,264 +1,266 @@
 <template>
   <div class="hello">
-    <hr>
-    <div>
-      <h2>Dropdown component</h2>
-      <div class="dropdowns">
-        <div class="left-align">
-          <h3>Left Align (Without beak)</h3>
-          <flock-dropdown
-            :open="dropdownOpen"
-            align="left"
-            width="120%"
-          >
-            <div slot="text">Display Label</div>
-            <div>
-              This content will be displayed.
-            </div>
-          </flock-dropdown>
-        </div>
-        <div class="middle-align">
-          <h3>Middle Align</h3>
-          <flock-dropdown
-            beakSize="6px"
-            :open="dropdownOpen"
-          >
-            <div slot="text">Display Label</div>
-            <div>
-              This content will be displayed.
-            </div>
-          </flock-dropdown>
-        </div>
-        <div class="right-align">
-          <h3>Right Align</h3>
-          <flock-dropdown
-            :open="dropdownOpen"
-            align="right"
-            width="120%"
-          >
-            <div slot="text">Display Label</div>
-            <div>
-              This content will be displayed.
-            </div>
-          </flock-dropdown>
-        </div>
-        <div class="left-align">
-          <h3>Dropdown List</h3>
-          <flock-select
-            :options="listOptions"
-            v-model="selectedOption"
-          />
-          <flock-select
-            width="150px"
-            :options="listOptions"
-            v-model="selectedOption2"
-          />
+    <FlockLoader :loading="loading" :fullPage="true">
+      <hr>
+      <div>
+        <h2>Dropdown component</h2>
+        <div class="dropdowns">
+          <div class="left-align">
+            <h3>Left Align (Without beak)</h3>
+            <flock-dropdown
+              :open="dropdownOpen"
+              align="left"
+              width="120%"
+            >
+              <div slot="text">Display Label</div>
+              <div>
+                This content will be displayed.
+              </div>
+            </flock-dropdown>
+          </div>
+          <div class="middle-align">
+            <h3>Middle Align</h3>
+            <flock-dropdown
+              beakSize="6px"
+              :open="dropdownOpen"
+            >
+              <div slot="text">Display Label</div>
+              <div>
+                This content will be displayed.
+              </div>
+            </flock-dropdown>
+          </div>
+          <div class="right-align">
+            <h3>Right Align</h3>
+            <flock-dropdown
+              :open="dropdownOpen"
+              align="right"
+              width="120%"
+            >
+              <div slot="text">Display Label</div>
+              <div>
+                This content will be displayed.
+              </div>
+            </flock-dropdown>
+          </div>
+          <div class="left-align">
+            <h3>Dropdown List</h3>
+            <flock-select
+              :options="listOptions"
+              v-model="selectedOption"
+            />
+            <flock-select
+              width="150px"
+              :options="listOptions"
+              v-model="selectedOption2"
+            />
+          </div>
         </div>
       </div>
-    </div>
-    <hr>
-    <h2>
-      Button Components:
-    </h2>
-    <div class="component-container">
-      <div
-        class="buttons"
-        :key="index"
-        v-for="(button, index) in buttonTypes">
-        <label for="">{{button.type}} {{ !!button.invert ? '(Inverted)' : '' }}:</label>
-        <label :for="`disabler-${index}`">
-          <input
-            :id="`disabler-${index}`"
-            type="checkbox"
-            v-model="button.disabled"
-          />
-          Disabled
-        </label>
+      <hr>
+      <h2>
+        Button Components:
+      </h2>
+      <div class="component-container">
+        <div
+          class="buttons"
+          :key="index"
+          v-for="(button, index) in buttonTypes">
+          <label for="">{{button.type}} {{ !!button.invert ? '(Inverted)' : '' }}:</label>
+          <label :for="`disabler-${index}`">
+            <input
+              :id="`disabler-${index}`"
+              type="checkbox"
+              v-model="button.disabled"
+            />
+            Disabled
+          </label>
+          <flock-button
+            :disabled="button.disabled"
+            :invert="!!button.invert"
+            :type="button.type">
+            {{button.type}}
+          </flock-button>
+        </div>
+      </div>
+      <div class="full-width">
         <flock-button
-          :disabled="button.disabled"
-          :invert="!!button.invert"
-          :type="button.type">
-          {{button.type}}
+          size="full"
+          :loading="loading"
+          @click="showLoader"
+        >
+          Show Loader
         </flock-button>
       </div>
-    </div>
-    <div class="full-width">
-      <flock-button
-        size="full"
-        :loading="loading"
-        @click="showLoader"
-      >
-        Full Button
-      </flock-button>
-    </div>
-    <div style="margin-top: 1em;">
-      Small Sized Button:
-      <flock-button size="auto" shape="flat" :small="true">
-        Click Me!
-      </flock-button>
-    </div>
-    <hr>
-    <h2>
-      Radio Input Components:
-    </h2>
-    <div class="container">
-      <div class="elem">
-        Radio Input Value: <b>{{ radio }}</b>
-        <flock-radio
-          label="Is this the value!"
-          v-model="radio"
-          optionValue="Yes"
-        >
-        </flock-radio>
-        <flock-radio
-          label="Or is this the value!"
-          v-model="radio"
-          optionValue="No"
-        >
-        </flock-radio>
+      <div style="margin-top: 1em;">
+        Small Sized Button:
+        <flock-button size="auto" shape="flat" :small="true">
+          Click Me!
+        </flock-button>
       </div>
-      <div class="elem">
-        Radio: <b>{{ disabledSelectedRadio }}</b>
-        <flock-radio
-          label="Disabled Selected"
-          v-model="disabledSelectedRadio"
-          optionValue="Disabled & Selected"
-          :disabled="true"
-        >
-        </flock-radio>
-        <flock-radio
-          label="Disabled unselected"
-          v-model="disabledSelectedRadio"
-          optionValue="Can be anything."
-          :disabled="true"
-        >
-        </flock-radio>
+      <hr>
+      <h2>
+        Radio Input Components:
+      </h2>
+      <div class="container">
+        <div class="elem">
+          Radio Input Value: <b>{{ radio }}</b>
+          <flock-radio
+            label="Is this the value!"
+            v-model="radio"
+            optionValue="Yes"
+          >
+          </flock-radio>
+          <flock-radio
+            label="Or is this the value!"
+            v-model="radio"
+            optionValue="No"
+          >
+          </flock-radio>
+        </div>
+        <div class="elem">
+          Radio: <b>{{ disabledSelectedRadio }}</b>
+          <flock-radio
+            label="Disabled Selected"
+            v-model="disabledSelectedRadio"
+            optionValue="Disabled & Selected"
+            :disabled="true"
+          >
+          </flock-radio>
+          <flock-radio
+            label="Disabled unselected"
+            v-model="disabledSelectedRadio"
+            optionValue="Can be anything."
+            :disabled="true"
+          >
+          </flock-radio>
+        </div>
       </div>
-    </div>
-    <hr>
-    <h2>Checkbox Component</h2>
-    <div class="container">
-      <div class="elem">
-        <flock-checkbox
-          v-model="checkbox"
-          id="checkbox"
-        >
-          Selected Checkbox
-        </flock-checkbox>
-        {{ checkbox }}
-      </div>
-      <div class="elem">
-        <flock-checkbox
-          type="switch"
-          v-model="checkbox"
-          id="checkbox"
-        >
-          Switch Styled
-        </flock-checkbox>
-        {{ checkbox }}
-      </div>
-      <div class="elem">
-        <flock-checkbox
-          v-model="disabledSelectedCheckbox"
-          :disabled="true"
-          id="disabledSelectedCheckbox"
-        >
-          Disabled Selected Checkbox
-        </flock-checkbox>
-        {{ disabledSelectedCheckbox }}
-      </div>
-      <div class="elem">
-        <flock-checkbox
-          v-model="disabledSelectedCheckbox"
-          :disabled="true"
-          type="switch"
-        >
-          Switch Styled
-        </flock-checkbox>
-        {{ disabledSelectedCheckbox }}
-      </div>
+      <hr>
+      <h2>Checkbox Component</h2>
+      <div class="container">
+        <div class="elem">
+          <flock-checkbox
+            v-model="checkbox"
+            id="checkbox"
+          >
+            Selected Checkbox
+          </flock-checkbox>
+          {{ checkbox }}
+        </div>
+        <div class="elem">
+          <flock-checkbox
+            type="switch"
+            v-model="checkbox"
+            id="checkbox"
+          >
+            Switch Styled
+          </flock-checkbox>
+          {{ checkbox }}
+        </div>
+        <div class="elem">
+          <flock-checkbox
+            v-model="disabledSelectedCheckbox"
+            :disabled="true"
+            id="disabledSelectedCheckbox"
+          >
+            Disabled Selected Checkbox
+          </flock-checkbox>
+          {{ disabledSelectedCheckbox }}
+        </div>
+        <div class="elem">
+          <flock-checkbox
+            v-model="disabledSelectedCheckbox"
+            :disabled="true"
+            type="switch"
+          >
+            Switch Styled
+          </flock-checkbox>
+          {{ disabledSelectedCheckbox }}
+        </div>
 
-      <div class="elem">
-        <flock-checkbox
-          v-model="disabledCheckbox"
-          :disabled="true"
-          id="disabledCheckbox"
-        >
-          Disabled Checkbox
-        </flock-checkbox>
-        {{ disabledCheckbox }}
-      </div>
-      <div class="elem">
-        <flock-checkbox
-          v-model="disabledCheckbox"
-          :disabled="true"
-          type="switch"
-        >
-          Disabled Checkbox
-        </flock-checkbox>
-        {{ disabledCheckbox }}
-      </div>
+        <div class="elem">
+          <flock-checkbox
+            v-model="disabledCheckbox"
+            :disabled="true"
+            id="disabledCheckbox"
+          >
+            Disabled Checkbox
+          </flock-checkbox>
+          {{ disabledCheckbox }}
+        </div>
+        <div class="elem">
+          <flock-checkbox
+            v-model="disabledCheckbox"
+            :disabled="true"
+            type="switch"
+          >
+            Disabled Checkbox
+          </flock-checkbox>
+          {{ disabledCheckbox }}
+        </div>
 
-      <div class="elem">
-        <flock-checkbox
-          v-model="arrayCheckbox"
-          trueValue="hello"
-        >
-          Hello
-        </flock-checkbox>
-        <flock-checkbox
-          v-model="arrayCheckbox"
-          trueValue="goodbye"
-        >
-          Goodbye
-        </flock-checkbox>
-        <flock-checkbox
-          v-model="arrayCheckbox"
-          trueValue="toodles"
-        >
-          Toodles
-        </flock-checkbox>
-        Chosen greetings: {{ arrayCheckbox }}
+        <div class="elem">
+          <flock-checkbox
+            v-model="arrayCheckbox"
+            trueValue="hello"
+          >
+            Hello
+          </flock-checkbox>
+          <flock-checkbox
+            v-model="arrayCheckbox"
+            trueValue="goodbye"
+          >
+            Goodbye
+          </flock-checkbox>
+          <flock-checkbox
+            v-model="arrayCheckbox"
+            trueValue="toodles"
+          >
+            Toodles
+          </flock-checkbox>
+          Chosen greetings: {{ arrayCheckbox }}
+        </div>
       </div>
-    </div>
-    <hr>
-    <h2>Banners & Toasts</h2>
-    <div class="content">
-      Toggle Banner position:
-      {{ position }}
-      <flock-button
-        @click="togglePosition"
-      >
-        Toggle
-      </flock-button>
-      <flock-banner
-        :position="position"
-      >
-        This is a banner!
-      </flock-banner>
-    </div>
-    <div class="content">
-      Show Toast:
-      <flock-button @click="showToast = !showToast">
-        Show Toast
-      </flock-button>
-      <flock-toast
-        :styles="toastStyles"
-        v-if="showToast"
-        position="top"
-        @toasthidden="showToast = false"
-      >
-        This is a styled toast!
-      </flock-toast>
-    </div>
-    <h2>Links</h2>
-    This link will show the toast:
-    <flock-link @click="showToast = !showToast">Show toast</flock-link>
-    <h2>Modal</h2>
-    <flock-button @click="showModal = !showModal">Toggle Modal</flock-button>
-    <FlockModal @close="showModal = false" v-if="showModal" title="Settings">
-      List of devices!
-    </FlockModal>
+      <hr>
+      <h2>Banners & Toasts</h2>
+      <div class="content">
+        Toggle Banner position:
+        {{ position }}
+        <flock-button
+          @click="togglePosition"
+        >
+          Toggle
+        </flock-button>
+        <flock-banner
+          :position="position"
+        >
+          This is a banner!
+        </flock-banner>
+      </div>
+      <div class="content">
+        Show Toast:
+        <flock-button @click="showToast = !showToast">
+          Show Toast
+        </flock-button>
+        <flock-toast
+          :styles="toastStyles"
+          v-if="showToast"
+          position="top"
+          @toasthidden="showToast = false"
+        >
+          This is a styled toast!
+        </flock-toast>
+      </div>
+      <h2>Links</h2>
+      This link will show the toast:
+      <flock-link @click="showToast = !showToast">Show toast</flock-link>
+      <h2>Modal</h2>
+      <flock-button @click="showModal = !showModal">Toggle Modal</flock-button>
+      <FlockModal @close="showModal = false" v-if="showModal" title="Settings">
+        List of devices!
+      </FlockModal>
+    </FlockLoader>
   </div>
 </template>
 
