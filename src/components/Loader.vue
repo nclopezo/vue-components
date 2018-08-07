@@ -34,10 +34,12 @@ export default {
   created() {
     if (this.fullPage) {
       this.style = {
-        height: '100%',
         position: 'fixed',
-        width: '100%',
         zIndex: '1',
+        top: '0',
+        bottom: '0',
+        left: '0',
+        right: '0',
       };
     }
   },
