@@ -39,6 +39,8 @@ export default {
   transform: translate(-50%, -50%);
   z-index: 2;
   text-align: left;
+  max-width: 80%;
+  max-height: 80%;
   &.stretch {
     left: 0;
     right: 0;
