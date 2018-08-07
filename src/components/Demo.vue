@@ -1,6 +1,6 @@
 <template>
   <div class="hello">
-    <FlockLoader :loading="loading" :fullPage="true">
+    <FlockLoader :loading="loading" :fullPage="true" loaderText="Connecting...">
       <hr>
       <div>
         <h2>Dropdown component</h2>

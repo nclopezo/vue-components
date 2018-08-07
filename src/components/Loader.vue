@@ -6,6 +6,9 @@
         height="32px"
         width="32px"
       />
+      <div v-if="loaderText" class="loader-text">
+        {{ loaderText }}
+      </div>
     </div>
     <slot v-else></slot>
   </div>
@@ -22,6 +25,7 @@ export default {
     };
   },
   props: {
+    loaderText: String,
     loading: {
       default: true,
       type: Boolean,
@@ -51,5 +55,9 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
+}
+.loader-text {
+  margin-top: 1em;
 }
 </style>
