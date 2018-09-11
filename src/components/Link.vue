@@ -1,7 +1,7 @@
 <template>
-  <a class="link" @click="onClick">
+  <button class="link" @click="onClick">
     <slot></slot>
-  </a>
+  </button>
 </template>
 <script>
 export default {
@@ -17,8 +17,14 @@ export default {
   cursor: pointer;
   color: $primary;
   font-weight: 500;
+  display: inline-block;
+  font-size: 1em;
+  border: none;
   &:hover {
     text-rendering: none;
+  }
+  &:focus {
+    outline: none;
   }
 }
 </style>
