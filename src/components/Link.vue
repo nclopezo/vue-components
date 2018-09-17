@@ -20,6 +20,7 @@ export default {
   display: inline-block;
   font-size: 1em;
   border: none;
+  background: none;
   &:hover {
     text-rendering: none;
   }
