@@ -16,7 +16,7 @@
 </FlockModal>
  */
 import closeIcon from '@/assets/images/close.svg';
-import GenericModal from './GenericModal.vue';
+import GenericModal from './FlockGenericModal.vue';
 
 export default {
   data() {

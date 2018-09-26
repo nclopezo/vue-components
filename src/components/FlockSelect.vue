@@ -21,7 +21,7 @@
   </div>
 </template>
 <script>
-import { eventBus } from './index';
+import eventBus from '@/helpers/eventBus';
 
 export default {
   data() {

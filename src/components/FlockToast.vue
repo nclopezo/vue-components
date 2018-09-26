@@ -11,7 +11,7 @@
   </div>
 </template>
 <script>
-import Banner from './Banner.vue';
+import Banner from './FlockBanner.vue';
 
 export default {
   components: {

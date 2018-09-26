@@ -75,28 +75,28 @@
             />
             Disabled
           </label>
-          <flock-button
+          <FlockButton
             :disabled="button.disabled"
             :invert="!!button.invert"
             :type="button.type">
             {{button.type}}
-          </flock-button>
+          </FlockButton>
         </div>
       </div>
       <div class="full-width">
-        <flock-button
+        <FlockButton
           size="full"
           :loading="loading"
           @click="showLoader"
         >
           Show Loader
-        </flock-button>
+        </FlockButton>
       </div>
       <div style="margin-top: 1em;">
         Small Sized Button:
-        <flock-button size="auto" shape="flat" :small="true">
+        <FlockButton size="auto" shape="flat" :small="true">
           Click Me!
-        </flock-button>
+        </FlockButton>
       </div>
       <hr>
       <h2>
@@ -227,11 +227,11 @@
       <div class="content">
         Toggle Banner position:
         {{ position }}
-        <flock-button
+        <FlockButton
           @click="togglePosition"
         >
           Toggle
-        </flock-button>
+        </FlockButton>
         <flock-banner
           :position="position"
         >
@@ -240,9 +240,9 @@
       </div>
       <div class="content">
         Show Toast:
-        <flock-button @click="showToast = !showToast">
+        <FlockButton @click="showToast = !showToast">
           Show Toast
-        </flock-button>
+        </FlockButton>
         <flock-toast
           :styles="toastStyles"
           v-if="showToast"
@@ -256,7 +256,7 @@
       This link will show the toast:
       <flock-link @click="showToast = !showToast">Show toast</flock-link>
       <h2>Modal</h2>
-      <flock-button @click="showModal = !showModal">Toggle Modal</flock-button>
+      <FlockButton @click="showModal = !showModal">Toggle Modal</FlockButton>
       <FlockModal @close="showModal = false" v-if="showModal" title="Settings">
         List of devices!
       </FlockModal>
@@ -265,13 +265,8 @@
 </template>
 
 <script>
-import Components from './index';
-
 export default {
   name: 'HelloWorld',
-  components: {
-    ...Components,
-  },
   data: () => ({
     radio: 'No',
     position: 'top',
