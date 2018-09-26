@@ -3,7 +3,7 @@
   "version": "0.1.71",
   "scripts": {
     "serve": "vue-cli-service serve --open",
-    "build": "vue-cli-service build --target lib --name flock ./src/components/index.js",
+    "build": "vue-cli-service build --target lib --name flock ./src/components/_globals.js",
     "build-wc": "vue-cli-service build --target wc --name flock 'src/components/*.vue'",
     "build-wc-async": "vue-cli-service build --target wc-async --name flock 'src/components/*.vue'",
     "test": "vue-cli-service test",
