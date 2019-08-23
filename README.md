@@ -7,7 +7,7 @@
 import Components from '@flockos/vue-components';
 
 // Global registration in your main.js/App.vue file
-Object.entries(Components).forEach((name, component) => {
+Object.entries(Components).forEach(([name, component]) => {
     Vue.component(name, component);
 });
 ```
